@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysvc
+spec:
+  selector: #specifies where traffic should be forwaded with label
+    app: mynginx
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80 #service port
+      targetPort: 80 #pod port
+
+
+#Command to create service using command
+
+# kb expose pod <pod-name> --type=<service type:NodePort,Cluster-IP,Load Balancer> --port=<port no> --target-port=<port no> 
+
+# kb expose pod mypod --type=NodePort --port=80 --target-port=80

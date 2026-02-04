@@ -13,3 +13,14 @@ spec: # container level data
       ports:
         - containerPort: 80 #This is the port inside the container
 
+
+#Command to create pod using command
+
+#Syntax
+#kubectl run <pod-name> --image=<image-name> --port=<port no>
+
+#Example
+#kb run mypod --image=nginx --port=80
+
+
+
