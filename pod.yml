@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod #type of pod
+
+metadata: #all pod level data name and label
+  name: mypod
+  labels:
+    myapp: mynginx #key value pair
+
+spec: # container level data
+  containers:
+    - name: mycontainer #name is the container’s name (unique inside the pod)
+      image: nginx #nginx is pulled from Docker Hub
+      ports:
+        - containerPort: 80 #This is the port inside the container
+

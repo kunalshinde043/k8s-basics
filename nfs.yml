@@ -1,0 +1,28 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: mydeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: mycontainer
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts: # pod path
+        - name: myefsvolume
+          mountPath: /usr/share/nginx/html
+      volumes: # work node path 
+      - name: myefsvolume
+        nfs: 
+          path: /data # created inside EBS of worker node 
+          server: fs-054f0bf656e38aa88.efs.us-east-1.amazonaws.com
+ 
